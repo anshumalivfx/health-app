@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { homeContent } from './Components-home/homeContent';
-import { About } from './Components-home/About';
+import { Prescription } from './Components-home/Prescription';
 import { Navbar } from './Navbar'
 // Hell yaa Here's Your fucking component professor hope you rot
 function Home() {
@@ -11,7 +11,7 @@ function Home() {
             <Navbar />
             
                 <Switch>
-                    <Route path="/about" component={About} />
+                    <Route path="/presc" component={Prescription} />
                     <Route path="/home" component={homeContent} />
                 </Switch>
             </Router>
