@@ -1,22 +1,14 @@
-import React from 'react'
-import './file.css'
-import avatar from '../../../assets/avatar.png'
+import React from "react";
+import "./file.css";
+import "tachyons";
 
-
-
-
-
-export const NameCard = () => {
-    return (
-        <div className="card d-flex " style={{ maxWidth: '14rem', borderRadius: '20px', maxHeight: '20rem' }}>
-            <div className="justify-content-center text-center">
-                <img src={avatar} class="rounded-circle" alt="HelPic" style={{ maxWidth: '50px', margin: '4px' }} />
-                <p className="w3-cursive" ><h3>Dr. ABC</h3></p>
-                <p><h4 style={{ fontSize: '20px' }}>Heart Specialist</h4></p>
-                <p><h4 style={{ fontSize: '20px' }}>FUXCKING HOSPITAL</h4></p>
-                
-            </div>
-
-        </div>
-    )
-}
+export const NameCard = (props) => {
+  return (
+    <div className="avatarstyle ma4 bg-light-purple dib pa3 tc grow shadow-4 hover-bg-dark-blue">
+      <img src={`https://joeschmoe.io/api/v1/${props.name} `} alt="Fuck-You" />
+      <h1 style={{ color: "white" }}>{props.name}</h1>
+      <p style={{ color: "white" }}>{props.work}</p>
+    </div>
+  );
+  //
+};

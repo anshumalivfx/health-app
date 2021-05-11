@@ -20,7 +20,7 @@ export const Navbar = () => {
                             
                         </ul>
                         <Link to="/">
-                            <button type="button" class="btn btn-warning">Logout</button>
+                            <button type="button" className="btn btn-warning">Logout</button>
                         </Link>
 
 
