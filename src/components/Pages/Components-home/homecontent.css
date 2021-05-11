@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Gugi');
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 .mainpage{width: 90%;
 height: 100vh;
 margin: auto;
 }
-
+.docsec h3{
+    font-family: 'Roboto', sans-serif;
+}
 .mainpage h1{
     font-family: 'Gugi', cursive;
     margin: 0;

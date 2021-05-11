@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { NameCard } from "./Doctorname-booking/NameCard";
+import { Doctordetails } from "./Doctorname-booking/Doctordetails";
 import { Link } from "react-router-dom";
+import SlidingPane from "react-sliding-pane";
+import "react-sliding-pane/dist/react-sliding-pane.css";
 import "./homecontent.css";
 import "tachyons";
-import DatePicker from "react-datepicker";
 
 import avatar from "../../assets/avatar.png";
 
@@ -12,8 +14,9 @@ export default class homeContent extends Component {
     super();
     this.state = {
       image: avatar,
-      name: " ",
-      hospital: " ",
+      name: "(Doctor's Name will appear here)",
+      hospital: "(Hospital's Name will appear here)",
+      isPaneOpen: false,
     };
   }
 
@@ -22,6 +25,7 @@ export default class homeContent extends Component {
       image: `https://joeschmoe.io/api/v1/${name}`,
       name: name,
       hospital: work,
+      isPaneOpen: true,
     });
   };
   render() {
@@ -63,7 +67,7 @@ export default class homeContent extends Component {
         <Link
           to="#"
           onClick={() => {
-            this.changetitle(Drlisttest[i].name, Drlisttest[i].work);
+          this.changetitle(Drlisttest[i].name, Drlisttest[i].work);
           }}
         >
           <NameCard
@@ -75,34 +79,38 @@ export default class homeContent extends Component {
         </Link>
       );
     });
-    const newdate = new Date();
     return (
-      <div className="mainpage flex flex-wrap bg-color-grey">
+      <div className="mainpage flex flex-wrap bg-color-grey row justify-content-center">
         <div className="row">
           <div className="col-md-9">
-            <div className="container p-3 my-3 border tc">
+            <div
+              className="docsec container p-3 my-3 border tc"
+              style={{ backgroundColor: "#D6D8D6" }}
+            >
               <h3>Select Your Doctor</h3>
               <div className="">{elements}</div>
             </div>
           </div>
-          <div className="col-md-3 order-first order-md-last">
-            <div className="container p-3 my-3 border tc">
-              <img
-                src={this.state.image}
-                alt="FUCK_OFF_DINGUS"
-                className="mt0 tc"
-                style={{ width: "200px", height: "200px" }}
-              />
-              <h5 className="tc">Name: {this.state.name}</h5>
-              <h5 className="tc">Hospital: {this.state.hospital}</h5>
-              <DatePicker
-                selected={this.state.startDate}
-                onChange={this.handleChange}
-                minDate={newdate}
-                placeholderText="Select a day"
-              />
-            </div>
-          </div>
+          <SlidingPane
+            className="some-custom-class"
+            overlayClassName="some-custom-overlay-class"
+            isOpen={this.state.isPaneOpen}
+            onRequestClose={(e) => {
+              // triggered on "<" on left top click or on outside click
+              this.setState({ isPaneOpen: false });
+            }}
+
+        width="400px"
+          >
+            <div className='flex justify-around'>
+                
+              <Doctordetails
+                image={this.state.image}
+                name={this.state.name}
+                work={this.state.hospital}
+                />
+                </div>
+          </SlidingPane>
         </div>
       </div>
     );
