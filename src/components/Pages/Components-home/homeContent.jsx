@@ -61,7 +61,7 @@ export default class homeContent extends Component {
         work: "DAWAKHANA HOSPITAL",
       },
       {
-        id:7,
+        id: 7,
         name: "Dr. HAHA",
         work: "TANTRIK HOSPITAL",
       },
@@ -72,7 +72,7 @@ export default class homeContent extends Component {
         <Link
           to="#"
           onClick={() => {
-          this.changetitle(Drlisttest[i].name, Drlisttest[i].work);
+            this.changetitle(Drlisttest[i].name, Drlisttest[i].work);
           }}
         >
           <NameCard
@@ -104,17 +104,15 @@ export default class homeContent extends Component {
               // triggered on "<" on left top click or on outside click
               this.setState({ isPaneOpen: false });
             }}
-
-        width="500px"
+            width="500px"
           >
-            <div className='flex justify-around center'>
-                
+            <div className="flex justify-around center">
               <Doctordetails
                 image={this.state.image}
                 name={this.state.name}
                 work={this.state.hospital}
-                />
-                </div>
+              />
+            </div>
           </SlidingPane>
         </div>
       </div>

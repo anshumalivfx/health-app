@@ -25,6 +25,7 @@ export function LoginForm(props) {
       })
       .catch((err) => {
         console.log("Error: " + err.toString());
+        alert("Error: Only Guys with small pps enters incorrect login details");
       });
   };
   const { switchToSignup } = useContext(AccountContext);
@@ -38,9 +39,11 @@ export function LoginForm(props) {
       <Marginer direction="vertical" margin={10} />
       <MutedLink href="#">Forget your password?</MutedLink>
       <Marginer direction="vertical" margin="1.6em" />
-      
-        <SubmitButton type="submit" onClick={()=>login()}>Signin</SubmitButton>
-      
+
+      <SubmitButton type="submit" onClick={() => login()}>
+        Signin
+      </SubmitButton>
+
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
         Don't have an account?{" "}
