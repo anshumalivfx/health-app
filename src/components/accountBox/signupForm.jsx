@@ -9,20 +9,37 @@ import {
 } from "./common";
 import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
+import fire from "../../config/fire";
+
+
 
 export function SignupForm(props) {
+const signUp = () => {
+  const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((u) => {
+        console.log("Successfully Signedup");
+      })
+      .catch((err) => {
+        console.log("Error: " + err.toString());
+      });
+}
+
   const { switchToSignin } = useContext(AccountContext);
 
   return (
     <BoxContainer>
       <FormContainer>
         <Input type="text" placeholder="Full Name" />
-        <Input type="email" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
+        <Input type="email" placeholder="Email" id = "email"/>
+        <Input type="password" placeholder="Password" id="password" />
         <Input type="password" placeholder="Confirm Password" />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
-      <SubmitButton type="submit">Signup</SubmitButton>
+      <SubmitButton type="submit" onClick={()=>signUp()} >Signup</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
         Already have an account?

@@ -60,6 +60,11 @@ export default class homeContent extends Component {
         name: "Dr. LOL",
         work: "DAWAKHANA HOSPITAL",
       },
+      {
+        id:7,
+        name: "Dr. HAHA",
+        work: "TANTRIK HOSPITAL",
+      },
     ];
 
     const elements = Drlisttest.map((drarraylist, i) => {
@@ -100,9 +105,9 @@ export default class homeContent extends Component {
               this.setState({ isPaneOpen: false });
             }}
 
-        width="400px"
+        width="500px"
           >
-            <div className='flex justify-around'>
+            <div className='flex justify-around center'>
                 
               <Doctordetails
                 image={this.state.image}

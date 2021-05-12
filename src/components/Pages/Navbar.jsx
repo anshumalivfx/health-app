@@ -1,6 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import fire from '../../config/fire'
+
+
 export const Navbar = () => {
+    const logout = () => {
+        fire.auth().signOut();
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -17,11 +23,14 @@ export const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/presc">Prescription</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/presc">Report</Link>
+                            </li>
                             
                         </ul>
-                        <Link to="/">
-                            <button type="button" className="btn btn-warning">Logout</button>
-                        </Link>
+                       
+                            <button type="button" className="btn btn-warning" onClick={()=>logout()} >Logout</button>
+
 
 
                     </div>

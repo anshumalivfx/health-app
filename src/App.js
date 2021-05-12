@@ -1,8 +1,10 @@
+import React, { Component } from "react";
 import "./App.css";
 import styled from "styled-components";
 import { AccountBox } from "./components/accountBox";
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Home from './components/Pages/Home'
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import Home from "./components/Pages/Home";
+import fire from "./config/fire";
 const AppContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -12,24 +14,43 @@ const AppContainer = styled.div`
   justify-content: center;
 `;
 
-function App() {
-  return (
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
 
+    this.authListener = this.authListener.bind(this);
+  }
 
-    <Router>
-      <Switch>
-        <Route path="/home" component={Home} />
-        <AppContainer>
+  componentDidMount() {
+    this.authListener();
+  }
 
-          <Route path="/" component={AccountBox} />
-        </AppContainer>
-      </Switch>
-
-    </Router>
-
-
-
-  );
+  authListener() {
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      }
+      else {
+        this.setState({user: null});
+      }
+    });
+  }
+  render() {
+    return (
+      
+        <Router>
+        
+          {this.state.user ? (<Home/>) : (<AppContainer><AccountBox /></AppContainer>)}
+          
+            {/* <Route path="/" component={AccountBox} />
+          </AppContainer> */}
+      </Router>
+      
+    );
+  }
 }
 
 export default App;
