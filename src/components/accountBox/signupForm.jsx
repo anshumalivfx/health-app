@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   BoldLink,
   BoxContainer,
@@ -13,9 +13,18 @@ import fire from "../../config/fire";
 
 export function SignupForm(props) {
   const signUp = () => {
+    const fullname = document.querySelector("#displayname").value;
+
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
-    const fullname = document.querySelector("#displayname").value;
+    const confirmpassword = document.querySelector("#conpassword").value;
+    if (password != confirmpassword) {
+      alert("password Doesn't Match, Please try Again");
+      document.querySelector("#password").value = "";
+      document.querySelector("#conpassword").value = "";
+      return;
+    }
+
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -39,7 +48,11 @@ export function SignupForm(props) {
         <Input type="text" placeholder="Full Name" id="displayname" />
         <Input type="email" placeholder="Email" id="email" />
         <Input type="password" placeholder="Password" id="password" />
-        <Input type="password" placeholder="Confirm Password" />
+        <Input
+          type="password"
+          placeholder="Confirm Password"
+          id="conpassword"
+        />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
       <SubmitButton type="submit" onClick={() => signUp()}>

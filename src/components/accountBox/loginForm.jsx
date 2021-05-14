@@ -9,11 +9,16 @@ import {
 } from "./common";
 import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
-import { Link } from "react-router-dom";
 
 import fire from "../../config/fire";
 
 export function LoginForm(props) {
+  const onEnterPress = (e) => {
+    if(e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      login();
+    }
+  }
   const login = () => {
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
@@ -33,8 +38,8 @@ export function LoginForm(props) {
   return (
     <BoxContainer>
       <FormContainer>
-        <Input type="email" placeholder="Email" id="email" />
-        <Input type="password" placeholder="Password" id="password" />
+        <Input type="email" placeholder="Email" id="email" onKeyDown={(e)=>onEnterPress(e)}/>
+        <Input type="password" placeholder="Password" id="password" onKeyDown={(e)=>onEnterPress(e)}/>
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
       <MutedLink href="#">Forget your password?</MutedLink>
