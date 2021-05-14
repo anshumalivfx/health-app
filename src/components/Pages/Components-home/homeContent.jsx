@@ -34,7 +34,7 @@ export default class homeContent extends Component {
     const Drlisttest = [
       {
         id: 1,
-        name: "Dr. Rajamurthi Periyar Iyer",
+        name: "Dr. Raja Iyer",
         work: "FUCKING HOSPITAL",
         type: "Phyician",
       },
