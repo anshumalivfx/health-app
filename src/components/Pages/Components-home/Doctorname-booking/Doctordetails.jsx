@@ -1,14 +1,37 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
+const Button = styled.button`
+  margin-top: 10px;
+  width: 70%;
+  padding: 11px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px 100px 100px 100px;
+  cursor: pointer;
+  transition: all, 240ms ease-in-out;
+  background: rgb(56, 45, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 45, 255, 1) 0%,
+    rgba(67, 67, 255, 1) 11%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  justify-content: "center";
+  align-items: "center";
+  &:hover {
+    filter: brightness(1.03);
+  }
+`;
 export const Doctordetails = (props) => {
   const [value, onChange] = useState(new Date());
-  
+
   return (
     <div className="container p-3 my-3 border tc ma4 justify-content-center">
       <img
@@ -19,10 +42,11 @@ export const Doctordetails = (props) => {
       />
       <h5 className="tc">Name: {props.name}</h5>
       <h5 className="tc">Hospital: {props.work}</h5>
+      <h5 className="tc" >Specialist: {props.type}</h5>
       <h6 className="selectdate">Select Date</h6>
-      <DatePicker selected={value} onChange={date => onChange(date)} />
-      <Link className="f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-purple ma4" to="#" style={{color: 'white'}}> Book Appointment</Link>
+      <DatePicker selected={value} onChange={(date) => onChange(date)} />
 
+      <Button className="grow">Book Appointment</Button>
     </div>
   );
 };
