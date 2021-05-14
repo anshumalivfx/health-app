@@ -37,10 +37,10 @@ export const NameCard = (props) => {
   return (
     <MainDiv
       className="avatarstyle ma4 bg-light-purple dib pa3 tc grow shadow-4 br4"
-      style={{ maxWidth: "250px" }}
+      style={{ maxWidth: "250px", maxHeight: "250" , minWidth: "300"}}
     >
       <img src={`https://joeschmoe.io/api/v1/${props.name} `} alt="Fuck-You" />
-      <h3 style={{ color: "white", fontSize: 20, margin: 5 }}>{props.name}</h3>
+      <h3 style={{ color: "white", fontSize: 30, margin: 5 }}>{props.name}</h3>
       <p style={{ color: "white" }}>{props.type}</p>
       <p style={{ color: "white" }}>{props.work}</p>
     </MainDiv>
