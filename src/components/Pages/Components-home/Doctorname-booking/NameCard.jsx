@@ -24,6 +24,12 @@ const MainDiv = styled.div`
       rgba(0, 212, 255, 1) 100%
     );
     filter: brightness(1.03);
+    animation: glow 0.8s linear infinite alternate;
+    @keyframes glow {
+      to {
+        box-shadow: 0px 0px 40px 20px #0ff;
+      }
+    }
   }
 `;
 

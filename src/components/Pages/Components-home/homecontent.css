@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Gugi');
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Mouse+Memoirs');
 
 .mainpage{width: 90%;
 height: 100vh;
 margin: auto;
 }
-.docsec h3{
-    font-family: 'Roboto', sans-serif;
+.docsec h1{
+    font-family: 'Mouse Memoirs', sans-serif;
 }
 .mainpage h1{
-    font-family: 'Roboto', cursive;
+    font-family: 'Mouse Memoirs', cursive;
+    -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
     margin: 0;
     padding: 20px 0;
     text-align: center;

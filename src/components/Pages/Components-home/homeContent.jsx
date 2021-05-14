@@ -102,9 +102,9 @@ export default class homeContent extends Component {
           <div className="col-md-9">
             <div
               className="docsec container p-3 my-3 border tc"
-              style={{ backgroundColor: "#D6D8D6" }}
+              style={{ backgroundColor: "#FAACA8", background: "linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%)" }}
             >
-              <h3>Select Your Doctor</h3>
+              <h1 style={{color: 'white', fontSize: 60}}>Select Your Doctor</h1>
 
               <div className="">{elements}</div>
             </div>
