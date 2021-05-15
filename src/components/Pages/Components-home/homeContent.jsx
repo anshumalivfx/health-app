@@ -74,6 +74,12 @@ export default class homeContent extends Component {
         work: "TANTRIK HOSPITAL",
         type: "Tantra Mantra Aghori Lmao",
       },
+      {
+        id: 8,
+        name: "Dr. Sanjeev Murthy",
+        work: "fortis",
+        type: "Child Specialist"
+      }
     ];
     const elements = Drlisttest.map((drarraylist, i) => {
       return (
@@ -101,10 +107,8 @@ export default class homeContent extends Component {
     return (
       <div className="mainpage flex flex-wrap bg-color-grey row justify-content-center">
         <div
-          className="docsec container p-3 my-3 border tc"
+          className="docsec container p-3 my-3 tc br4 shadow-1"
           style={{
-            backgroundColor: "#FAACA8",
-            background: "linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%)",
             flex: 1,
           }}
         >

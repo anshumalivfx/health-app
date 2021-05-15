@@ -36,8 +36,8 @@ const MainDiv = styled.div`
 export const NameCard = (props) => {
   return (
     <MainDiv
-      className="avatarstyle ma4 bg-light-purple dib pa3 tc grow shadow-4 br4"
-      style={{ maxWidth: "250px", maxHeight: "250" , minWidth: "300"}}
+      className="avatarstyle ma4 bg-light-purple dib pa3 tc grow shadow-4 br4 shadow-3"
+      style={{ maxWidth: "250px", maxHeight: "250", minWidth: "300" }}
     >
       <img src={`https://joeschmoe.io/api/v1/${props.name} `} alt="Fuck-You" />
       <h3 style={{ color: "white", fontSize: 30, margin: 5 }}>{props.name}</h3>

@@ -30,7 +30,7 @@ export function LoginForm(props) {
       })
       .catch((err) => {
         console.log("Error: " + err.toString());
-        alert("Error: Only Guys with small pps enters incorrect login details");
+        alert(err.toString() );
       });
   };
   const { switchToSignup } = useContext(AccountContext);

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import styled from "styled-components";
 import { AccountBox } from "./components/accountBox";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import {  BrowserRouter as Router} from "react-router-dom";
 import Home from "./components/Pages/Home";
 import fire from "./config/fire";
 const AppContainer = styled.div`
@@ -44,8 +44,7 @@ class App extends Component {
         <Router>
         
           {this.state.user ? (<Home/>) : (<AppContainer><AccountBox /></AppContainer>)}
-          
-            {/* <Route path="/" component={AccountBox} />
+             {/* <Route path="/" component={AccountBox} />
           </AppContainer> */}
       </Router>
       

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   BoldLink,
   BoxContainer,
@@ -18,7 +18,15 @@ export function SignupForm(props) {
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const confirmpassword = document.querySelector("#conpassword").value;
-    if (password != confirmpassword) {
+    if (fullname === "" ) {
+      alert("Enter Your Full Name");
+
+      document.querySelector("#password").value = "";
+      document.querySelector("#conpassword").value = "";
+      return;
+    }
+
+    if (password !== confirmpassword) {
       alert("password Doesn't Match, Please try Again");
       document.querySelector("#password").value = "";
       document.querySelector("#conpassword").value = "";

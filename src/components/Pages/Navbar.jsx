@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import fire from "../../config/fire";
-import avatar from "../assets/avatar.png";
+import { NavDropdown, NavItem } from "react-bootstrap";
+import "tachyons";
 
 export const Navbar = () => {
   const logout = () => {
@@ -12,7 +13,10 @@ export const Navbar = () => {
     <div>
       <nav
         className="navbar navbar-expand-lg navbar-dark"
-        style={{ background: "linear-gradient(90deg, rgba(56,45,255,1) 0%, rgba(67,67,255,1) 11%, rgba(0,212,255,1) 100%)" }}
+        style={{
+          background:
+            " linear-gradient(90deg, rgba(51,81,237,1) 0%, rgba(0,33,203,1) 52%, rgba(27,26,235,1) 100%)",
+        }}
       >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/home">
@@ -47,14 +51,36 @@ export const Navbar = () => {
                 </Link>
               </li>
             </ul>
-
-            <button
-              type="button"
-              className="btn btn-warning"
-              onClick={() => logout()}
+            <NavDropdown
+              title={
+                <span
+                  className=" link ph3 pv2 mb2 grow hover-bg-yellow black bg-animate"
+                  style={{ color: "#fff" }}
+                >
+                  {fire.auth().currentUser.displayName ||
+                    fire.auth().currentUser.email}
+                </span>
+              }
+              id="basic-nav-dropdown"
             >
-              Logout
-            </button>
+
+              <NavDropdown.Item>
+                <Link
+                  className="no-underline"
+                  style={{ color: "#000", flex: 1 }}
+                  to="/profile"
+                >
+                  My Profile
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                type="button"
+                className="btn btn-warning"
+                onClick={() => logout()}
+              >
+                Logout
+              </NavDropdown.Item>
+            </NavDropdown>
           </div>
         </div>
       </nav>

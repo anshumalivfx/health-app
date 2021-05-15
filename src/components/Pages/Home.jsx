@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import homeContent from "./Components-home/homeContent";
-import { Prescription } from "./Components-home/Prescription";
+import Prescription  from "./Components-home/Prescription";
 import { Navbar } from "./Navbar";
-import { AnimatedSwitch } from "react-router-transition";
+import Profile from "./Components-home/user/Profile";
 
 function Home() {
   return (
@@ -11,15 +11,11 @@ function Home() {
       <Router>
         <Navbar />
 
-        <AnimatedSwitch
-          atEnter={{ opacity: 0 }}
-          atLeave={{ opacity: 0 }}
-          atActive={{ opacity: 1 }}
-          className="switch-wrapper"
-        >
+        <Switch>
+          <Route path="/profile" component={Profile} />
           <Route path="/presc" component={Prescription} />
           <Route path="/" component={homeContent} />
-        </AnimatedSwitch>
+        </Switch>
       </Router>
     </>
   );

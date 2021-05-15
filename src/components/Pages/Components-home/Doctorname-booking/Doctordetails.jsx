@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import 'tachyons'
 import "react-datepicker/dist/react-datepicker.css";
