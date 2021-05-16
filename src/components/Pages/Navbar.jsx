@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import fire from "../../config/fire";
-import { NavDropdown, NavItem } from "react-bootstrap";
+import { NavDropdown } from "react-bootstrap";
 import "tachyons";
 
 export const Navbar = () => {
@@ -46,7 +46,7 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/presc">
+                <Link className="nav-link" to="/report">
                   Report
                 </Link>
               </li>
@@ -63,16 +63,15 @@ export const Navbar = () => {
               }
               id="basic-nav-dropdown"
             >
-
-              <NavDropdown.Item>
-                <Link
+              
+                <NavLink
                   className="no-underline"
-                  style={{ color: "#000", flex: 1 }}
+                  style={{ color: "#000", padding: 13 }}
                   to="/profile"
                 >
                   My Profile
-                </Link>
-              </NavDropdown.Item>
+                </NavLink>
+              
               <NavDropdown.Item
                 type="button"
                 className="btn btn-warning"
