@@ -131,9 +131,9 @@ export default class Prescription extends Component {
       );
     });
     return (
-      <div className="mainpage flex  bg-color-grey row justify-content-center">
+      <div className="mainpage flex  bg-color-grey row justify-content-center text-gray-100" >
         <div
-          className="docsec container p-3 my-3 tc br4 shadow-1"
+          className="docsec container p-3 my-3 tc br4 shadow-1 backdrop-filter backdrop-blur-lg text-gray-100"
           style={{
             flex: 0.4,
             margin: 5,
@@ -152,7 +152,7 @@ export default class Prescription extends Component {
           </Table>
         </div>{" "}
         <div
-          className="docsec container p-3 my-3 tc br4 shadow-1"
+          className="docsec container p-3 my-3 tc br4 shadow-1 backdrop-filter backdrop-blur-lg "
           style={{
             flex: 0.6,
             margin: 5,
@@ -164,7 +164,7 @@ export default class Prescription extends Component {
             <span>Date: {this.state.date}</span>
           </div>
           <p></p>
-          <Table stripped bordered hover>
+          <Table stripped bordered hover className="text-gray-100">
             <tr>
               <td>S.no</td>
               <td>Medicine</td>

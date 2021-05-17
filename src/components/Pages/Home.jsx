@@ -1,21 +1,23 @@
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import homeContent from "./Components-home/homeContent";
-import Prescription  from "./Components-home/Prescription";
+import Prescription from "./Components-home/Prescription";
 import { Navbar } from "./Navbar";
-import Profile from "./Components-home/user/Profile";
-import Report from './Components-home/Report'
+import Report from "./Components-home/Report";
+import "./Home.css";
 
 function Home() {
   return (
     <>
+      <div class="bg"></div>
+      <div class="bg bg2"></div>
+      <div class="bg bg3"></div>
+
       <Router>
         <Navbar />
 
         <Switch>
-          
           <Route path="/report" component={Report} />
-          <Route path="/profile" component={Profile} />
           <Route path="/presc" component={Prescription} />
           <Route path="/" component={homeContent} />
         </Switch>

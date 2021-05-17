@@ -63,15 +63,6 @@ export const Navbar = () => {
               }
               id="basic-nav-dropdown"
             >
-              
-                <NavLink
-                  className="no-underline"
-                  style={{ color: "#000", padding: 13 }}
-                  to="/profile"
-                >
-                  My Profile
-                </NavLink>
-              
               <NavDropdown.Item
                 type="button"
                 className="btn btn-warning"

@@ -107,7 +107,7 @@ export default class homeContent extends Component {
     return (
       <div className="mainpage flex flex-wrap bg-color-grey row justify-content-center">
         <div
-          className="docsec container p-3 my-3 tc br4 shadow-1"
+          className="docsec container p-3 my-3 tc br4 shadow-1 backdrop-filter backdrop-blur-lg	"
           style={{
             flex: 1,
           }}

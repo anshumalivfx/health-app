@@ -60,20 +60,21 @@ export default class Report extends Component {
     });
     return (
       <div
-        className="mainpage flex  bg-color-grey row justify-content-center"
+        className="mainpage flex  bg-color-grey row justify-content-center text-gray-100"
         style={{
           flex: 1,
+          color: ''
         }}
       >
         <div
-          className="docsec container p-3 my-3 tc br4 "
+          className="docsec container p-3 my-3 tc br4  shadow-1 backdrop-filter backdrop-blur-lg"
           style={{
             flex: 0.4,
             margin: 5,
           }}
         >
           <h3 style={{ fontSize: 45 }}>Previous Reports</h3>
-          <Table stripped bordered hover style={{ marginTop: 20 }}>
+          <Table stripped bordered hover style={{ marginTop: 20, color: 'white' }}>
             <tr>
               <td>Booking Id</td>
               <td>Doctor's Name</td>
@@ -84,7 +85,7 @@ export default class Report extends Component {
           </Table>
         </div>
         <div
-          className="docsec container p-3 my-3 tc br4 shadow-1"
+          className="docsec container p-3 my-3 tc br4 shadow-1 backdrop-filter backdrop-blur-lg"
           style={{
             flex: 0.6,
             margin: 5,
@@ -105,7 +106,7 @@ export default class Report extends Component {
             }}
           >
 
-            <p className=" text-left" >
+            <p className=" text-left text-black" >
               Dear {fire.auth().currentUser.displayName},<br />
               {this.state.report}
             </p>

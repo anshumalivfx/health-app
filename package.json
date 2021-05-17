@@ -27,8 +27,10 @@
     "react-router-transition": "^2.1.0",
     "react-scripts": "4.0.3",
     "react-sliding-pane": "^7.0.0",
+    "react-starfield-animation": "^1.0.1",
     "styled-components": "^5.2.3",
     "tachyons": "^4.12.0",
+    "tailwindcss": "^2.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
