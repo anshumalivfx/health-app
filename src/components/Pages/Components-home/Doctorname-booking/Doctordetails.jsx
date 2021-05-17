@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import styled from "styled-components";
-import 'tachyons'
+import "tachyons";
 import "react-datepicker/dist/react-datepicker.css";
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import Dialog from '@material-ui/core/Dialog';
 
 const Button = styled.button`
   margin-top: 10px;
@@ -30,11 +35,16 @@ const Button = styled.button`
 `;
 export const Doctordetails = (props) => {
   const [value, onChange] = useState(new Date());
-
+  const[open, setOpen] = useState(false)
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
-    <div
-      className="flex flex-wrap"
-    >
+    <div className="flex flex-wrap">
       <div
         className="container p-3 my-3 border tc ma4 justify-content-center"
         style={{ width: 300, left: "10" }}
@@ -49,9 +59,27 @@ export const Doctordetails = (props) => {
         <h5 className="tc">Hospital: {props.work}</h5>
         <h5 className="tc">Specialist: {props.type}</h5>
         <h6 className="selectdate">Select Date</h6>
-        <DatePicker selected={value} onChange={(date) => onChange(date)}/>
+        <DatePicker selected={value} onChange={(date) => onChange(date)} />
 
-        <Button className="grow">Book Appointment</Button>
+        <Button className="grow" onClick={handleClickOpen} >Book Appointment</Button>
+        <Dialog open={open} onClose={handleClose}>
+        <DialogTitle className="tc" >
+           Confirm Booking?
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Do you want to Book an Appointment on {value.toDateString()} for {props.name} ?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary" className='grow' >
+           Yes
+          </Button>
+          <Button onClick={handleClose} color="primary" className='grow'>
+           No
+          </Button>
+        </DialogActions>
+      </Dialog>
       </div>
     </div>
   );

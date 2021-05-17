@@ -3,7 +3,8 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import fire from "../../../config/fire";
-import { ThreeSixtyOutlined } from "@material-ui/icons";
+
+
 export default class Report extends Component {
   constructor() {
     super();
@@ -65,7 +66,7 @@ export default class Report extends Component {
         }}
       >
         <div
-          className="docsec container p-3 my-3 tc br4 shadow-1"
+          className="docsec container p-3 my-3 tc br4 "
           style={{
             flex: 0.4,
             margin: 5,
@@ -87,6 +88,8 @@ export default class Report extends Component {
           style={{
             flex: 0.6,
             margin: 5,
+            justifyContent: 'center',
+            alignContent: 'center'
           }}
         >
           <h3 style={{ fontSize: 45 }}>Report</h3>
@@ -95,13 +98,14 @@ export default class Report extends Component {
             <span>Date: {this.state.date}</span>
           </div>
           <div
-            className="docsec container p-3 my-3 br4 shadow-1 fa fa-trash hidden"
+            className="container p-3 my-3 "
             style={{
-              flex: 0.6,
-              margin: 5,
+              backgroundColor: 'lightgreen',
+              textAlign: 'left'
             }}
           >
-            <p className="fa fa-trash hidden" >
+
+            <p className=" text-left" >
               Dear {fire.auth().currentUser.displayName},<br />
               {this.state.report}
             </p>
