@@ -33,7 +33,7 @@ const Button = styled.button`
     filter: brightness(1.03);
   }
 `;
-export const Doctordetails = (props) => {
+export const Card = (props) => {
   const [value, onChange] = useState(new Date());
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -56,10 +56,6 @@ export const Doctordetails = (props) => {
           style={{ width: "200px", height: "200px", marginLeft: 30 }}
         />
         <h5 className="tc">Name: {props.name}</h5>
-        <h5 className="tc">Hospital: {props.work}</h5>
-        <h5 className="tc">Specialist: {props.type}</h5>
-        <h6 className="selectdate">Select Date</h6>
-        <DatePicker selected={value} onChange={(date) => onChange(date)} />
 
         <Button className="grow" onClick={handleClickOpen}>
           Book Appointment
