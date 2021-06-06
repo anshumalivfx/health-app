@@ -12,13 +12,30 @@ import { AccountContext } from "./accountContext";
 import fire from "../../config/fire";
 
 export function SignupForm(props) {
+  // const SignUpTest = (e) => {
+  //   const fullname = document.querySelector("#displayname").value;
+
+  //   const email = document.querySelector("#email").value;
+  //   const uid = "Xsndskdnkjdbkjdbjkdjkdkjdjkdj";
+  //   e.preventDefault();
+  //   const data = { uid: uid, name: fullname, email: email };
+  //   fetch("/create_new_user", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => console.log(res));
+  // };
   const signUp = () => {
     const fullname = document.querySelector("#displayname").value;
 
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const confirmpassword = document.querySelector("#conpassword").value;
-    if (fullname === "" ) {
+    if (fullname === "") {
       alert("Enter Your Full Name");
 
       document.querySelector("#password").value = "";
@@ -41,6 +58,21 @@ export function SignupForm(props) {
         u.user.updateProfile({
           displayName: fullname,
         });
+        const data = {
+          uid: u.user.uid,
+          name: fullname,
+          email: email,
+          password: password,
+        };
+        fetch("/create_new_user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((res) => console.log(res));
       })
       .catch((err) => {
         console.log("Error: " + err.toString());
@@ -52,7 +84,7 @@ export function SignupForm(props) {
 
   return (
     <BoxContainer>
-      <FormContainer>
+      <FormContainer action="">
         <Input type="text" placeholder="Full Name" id="displayname" />
         <Input type="email" placeholder="Email" id="email" />
         <Input type="password" placeholder="Password" id="password" />
@@ -63,7 +95,7 @@ export function SignupForm(props) {
         />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
-      <SubmitButton type="submit" onClick={() => signUp()}>
+      <SubmitButton type="submit" onClick={signUp}>
         Signup
       </SubmitButton>
       <Marginer direction="vertical" margin="1em" />

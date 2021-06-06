@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
 import styled from "styled-components";
 import "tachyons";
 import "react-datepicker/dist/react-datepicker.css";
@@ -34,7 +33,7 @@ const Button = styled.button`
   }
 `;
 export const Card = (props) => {
-  const [value, onChange] = useState(new Date());
+  const [value] = useState(new Date());
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -58,13 +57,13 @@ export const Card = (props) => {
         <h5 className="tc">Name: {props.name}</h5>
 
         <Button className="grow" onClick={handleClickOpen}>
-          Book Appointment
+          Confirm Appointent
         </Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle className="tc">Confirm Booking?</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Do you want to Book an Appointment on {value.toDateString()} for{" "}
+              Do you want to Accept the Appointment on {value.toDateString()} for{" "}
               {props.name} ?
             </DialogContentText>
           </DialogContent>

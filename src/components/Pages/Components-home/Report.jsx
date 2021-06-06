@@ -4,53 +4,48 @@ import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import fire from "../../../config/fire";
 
-
 export default class Report extends Component {
   constructor() {
     super();
     this.state = {
+      name: null,
       date: null,
       report: null,
+      doctors: [],
     };
   }
-  addReport(date, report) {
+  addReport(name, date, report) {
     this.setState({
+      name: name,
       date: date,
-      report: report,
+      report: `Dear ${fire.auth().currentUser.displayName}, ` + report,
     });
   }
   render() {
-    const Report = [
-      {
-        id: "121212321",
-        name: "Dr. Bewafa",
-        date: "12/10/2020",
-        report: "Patient is COVID POSITIVE",
-      },
-      {
-        id: "122111212",
-        name: "Dr. Wahwahh",
-        date: "12/10/2021",
-        report: "Patient is COVID NEGATIVE",
-      },
-      {
-        id: "121212112",
-        name: "Dr. lalla",
-        date: "12/10/2022",
-        report: "Patient is STUPIDITY POSITIVE",
-      },
-    ];
+    fetch("/doctors")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({ doctors: data });
+      })
+      .catch((err) => {
+        console.error(err.toString());
+      });
+    const Report = this.state.doctors;
     const reportdata = Report.map((data, i) => {
       return (
         <tr key={i}>
-          <td>{Report[i].id}</td>
+          <td>{Report[i].uid}</td>
           <td>{Report[i].name}</td>
           <td>{Report[i].date}</td>
           <td>
             {" "}
             <Link
               to="#"
-              onClick={() => this.addReport(Report[i].date, Report[i].report)}
+              onClick={() =>
+                this.addReport(Report[i].name, Report[i].date, Report[i].report)
+              }
             >
               <ArrowForwardIcon fontSize="large" />
             </Link>{" "}
@@ -60,10 +55,10 @@ export default class Report extends Component {
     });
     return (
       <div
-        className="mainpage flex  bg-color-grey row justify-content-center text-gray-100"
+        className="mainpage flex  bg-color-grey row justify-content-center"
         style={{
           flex: 1,
-          color: ''
+          color: "",
         }}
       >
         <div
@@ -74,7 +69,7 @@ export default class Report extends Component {
           }}
         >
           <h3 style={{ fontSize: 45 }}>Previous Reports</h3>
-          <Table stripped bordered hover style={{ marginTop: 20, color: 'white' }}>
+          <Table stripped bordered hover style={{ marginTop: 20 }}>
             <tr>
               <td>Booking Id</td>
               <td>Doctor's Name</td>
@@ -89,26 +84,25 @@ export default class Report extends Component {
           style={{
             flex: 0.6,
             margin: 5,
-            justifyContent: 'center',
-            alignContent: 'center'
+            justifyContent: "center",
+            alignContent: "center",
           }}
         >
           <h3 style={{ fontSize: 45 }}>Report</h3>
           <div className="dib row flex flex-wrap">
-            <span>Name: {fire.auth().currentUser.displayName}</span>
+            <span>Doctor's Name: {this.state.name}</span>
+            <span>Patient's Name: {fire.auth().currentUser.displayName}</span>
             <span>Date: {this.state.date}</span>
           </div>
           <div
             className="container p-3 my-3 "
             style={{
-              backgroundColor: 'lightgreen',
-              textAlign: 'left'
+              backgroundColor: "lightgreen",
+              textAlign: "left",
             }}
           >
-
-            <p className=" text-left text-black" >
-              Dear {fire.auth().currentUser.displayName},<br />
-              {this.state.report}
+            <p className=" text-left text-black">
+              {this.state.report}, <br />
             </p>
           </div>
         </div>

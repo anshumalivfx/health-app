@@ -5,7 +5,6 @@ import Prescription from "./Components-home/Prescription";
 import { Navbar } from "./Navbar";
 import Report from "./Components-home/Report";
 import "./Home.css";
-import HomeforDoctor from "./HomeforDoctor";
 
 function Home() {
   return (
@@ -15,8 +14,7 @@ function Home() {
       <div class="bg bg3"></div>
       <Router>
         <Navbar />
-         <Switch>
-          <Route path="/homedoc" component={HomeforDoctor}/>
+        <Switch>
           <Route path="/report" component={Report} />
           <Route path="/presc" component={Prescription} />
           <Route path="/" component={homeContent} />

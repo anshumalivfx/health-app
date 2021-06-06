@@ -18,9 +18,10 @@ export default class homeContent extends Component {
       hospital: "(Hospital's Name will appear here)",
       type: "{Doctor Type will appear here}",
       isPaneOpen: false,
+      doctors: [],
     };
   }
-
+  
   changetitle = (name, work, type) => {
     this.setState({
       image: `https://joeschmoe.io/api/v1/${name}`,
@@ -30,57 +31,97 @@ export default class homeContent extends Component {
       isPaneOpen: true,
     });
   };
+  
   render() {
-    const Drlisttest = [
-      {
-        id: 1,
-        name: "Dr. Raja Iyer",
-        work: "FUCKING HOSPITAL",
-        type: "Phyician",
-      },
-      {
-        id: 2,
-        name: "Dr. XYZ",
-        work: "ASSHOLE HOSPITAL",
-        type: "Cardiologist",
-      },
-      {
-        id: 3,
-        name: "Dr. HELL",
-        work: "SATANIC HOSPITAL",
-        type: "Probably Blood Test",
-      },
-      {
-        id: 4,
-        name: "Dr. MF",
-        work: "BENGALI HOSPITAL",
-        type: "Bengali Ilaj",
-      },
-      {
-        id: 5,
-        name: "Dr. DE",
-        work: "JHAAR FOOK HOSPITAL",
-        type: "Scary Things",
-      },
-      {
-        id: 6,
-        name: "Dr. Lala",
-        work: "DAWAKHANA HOSPITAL",
-        type: "Khandani Ilaaj",
-      },
-      {
-        id: 7,
-        name: "Dr. HAHA",
-        work: "TANTRIK HOSPITAL",
-        type: "Tantra Mantra Aghori Lmao",
-      },
-      {
-        id: 8,
-        name: "Dr. Sanjeev Murthy",
-        work: "fortis",
-        type: "Child Specialist"
-      }
-    ];
+    fetch("/doctors")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          doctors: data,
+        });
+      })
+      .catch((err) => {
+        console.log(err.toString());
+      });
+
+    const Drlisttest = this.state.doctors;
+    // const Drlisttest = [
+    //   {
+    //     id: 1,
+    //     name: "Dr. Raja Iyer",
+    //     work: "OLD HOSPITAL",
+    //     type: "Phyician",
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "Dr. XYZ",
+    //     work: "NEW HOSPITAL",
+    //     type: "Cardiologist",
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "Dr. HELL",
+    //     work: "CRAZY HOSPITAL",
+    //     type: "Probably Blood Test",
+    //   },
+    //   {
+    //     id: 4,
+    //     name: "Dr. MF",
+    //     work: "MONEY MAKING HOSPITAL",
+    //     type: "Exorcism",
+    //   },
+    //   {
+    //     id: 5,
+    //     name: "Dr. DE",
+    //     work: "COOL HOSPITAL",
+    //     type: "Scary Things",
+    //   },
+    //   {
+    //     id: 6,
+    //     name: "Dr. Lala",
+    //     work: "HOT HOSPITAL",
+    //     type: "Dawakhana",
+    //   },
+    //   {
+    //     id: 7,
+    //     name: "Dr. HAHA",
+    //     work: "TANTRIK HOSPITAL",
+    //     type: "Tantra Mantra Aghori Lmao",
+    //   },
+    //   {
+    //     id: 8,
+    //     name: "Dr. Sanjeev Murthy",
+    //     work: "fortis",
+    //     type: "Child Specialist",
+    //   },
+    // ];
+
+    /* for (let i = 0; i < Drlisttest; i++) {
+      console.log(Drlisttest.name);
+      elements = [
+        <Link
+          to="#"
+          onClick={() => {
+            this.changetitle(
+              Drlisttest[i].name,
+              Drlisttest[i].hospital,
+              Drlisttest[i].spec
+            );
+          }}
+        >
+          <NameCard
+            key={i}
+            id={Drlisttest[i].sno}
+            name={Drlisttest[i].name}
+            work={Drlisttest[i].hospital}
+            type={Drlisttest[i].spec}
+          />
+        </Link>,
+      ];
+    }
+*/
     const elements = Drlisttest.map((drarraylist, i) => {
       return (
         <Link
@@ -88,17 +129,17 @@ export default class homeContent extends Component {
           onClick={() => {
             this.changetitle(
               Drlisttest[i].name,
-              Drlisttest[i].work,
-              Drlisttest[i].type
+              Drlisttest[i].hospital,
+              Drlisttest[i].spec
             );
           }}
         >
           <NameCard
             key={i}
-            id={Drlisttest[i].id}
+            id={Drlisttest[i].sno}
             name={Drlisttest[i].name}
-            work={Drlisttest[i].work}
-            type={Drlisttest[i].type}
+            work={Drlisttest[i].hospital}
+            type={Drlisttest[i].spec}
           />
         </Link>
       );

@@ -11,15 +11,29 @@ export default class Prescription extends Component {
     this.state = {
       presvisible: null,
       date: "",
-      medicines: []
+      medicines: [],
+      doctors: [],
     };
   }
 
   render() {
-    const Prescription = [
+    fetch("/doctors")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          doctors: data,
+        });
+      })
+      .catch((err) => {
+        console.error(err.toString());
+      });
+      const Prescription = this.state.doctors
+    /* const Prescription = [
       {
         id: "121212321",
-        name: "Dr. Bewafa",
+        name: "Dr. New",
         date: "12/10/2020",
         medicines: [
           {
@@ -50,7 +64,7 @@ export default class Prescription extends Component {
       },
       {
         id: "122111212",
-        name: "Dr. Wahwahh",
+        name: "Dr. Old",
         date: "12/10/2021",
         medicines: [
           {
@@ -75,7 +89,7 @@ export default class Prescription extends Component {
       },
       {
         id: "121212112",
-        name: "Dr. lalla",
+        name: "Dr. Noob",
         date: "12/10/2022",
         medicines: [
           {
@@ -99,23 +113,12 @@ export default class Prescription extends Component {
         ],
       },
     ];
-
-    const medicineslist = this.state.medicines.map((data, i) => {
-      return(
-        <tr key={i}>
-          <td>{this.state.medicines[i].no}</td>
-          <td>{this.state.medicines[i].name}</td>
-          <td>{this.state.medicines[i].dose}</td>
-          <td>{this.state.medicines[i].timings}</td>
-        </tr>
-      );
-    })
+*/
     
-
     const presdata = Prescription.map((data, i) => {
       return (
         <tr key={i}>
-          <td>{Prescription[i].id}</td>
+          <td>{Prescription[i].uid}</td>
           <td>{Prescription[i].name}</td>
           <td>{Prescription[i].date}</td>
           <td>
@@ -123,17 +126,33 @@ export default class Prescription extends Component {
             <Link to="#">
               <ArrowForwardIcon
                 fontSize="large"
-                onClick={() => this.setState({ date: Prescription[i].date, medicines: Prescription[i].medicines })}
+                onClick={() =>
+                  this.setState({
+                    date: Prescription[i].date,
+                    medicines: Prescription[i].medicines,
+                  })
+                }
               />
             </Link>{" "}
           </td>
         </tr>
       );
     });
+    const medicineslist = this.state.medicines.map((data, i) => {
+      return (
+        <tr key={i}>
+          <td>{this.state.medicines[i].no}</td>
+          <td>{this.state.medicines[i].name}</td>
+          <td>{this.state.medicines[i].dose}</td>
+          <td>{this.state.medicines[i].timings}</td>
+        </tr>
+      );
+    });
+
     return (
-      <div className="mainpage flex  bg-color-grey row justify-content-center text-gray-100" >
+      <div className="mainpage flex  bg-color-grey row justify-content-center ">
         <div
-          className="docsec container p-3 my-3 tc br4 shadow-1 backdrop-filter backdrop-blur-lg text-gray-100"
+          className="docsec container p-3 my-3 tc br4 shadow-1 backdrop-filter backdrop-blur-lg"
           style={{
             flex: 0.4,
             margin: 5,
@@ -164,7 +183,7 @@ export default class Prescription extends Component {
             <span>Date: {this.state.date}</span>
           </div>
           <p></p>
-          <Table stripped bordered hover className="text-gray-100">
+          <Table stripped bordered hover>
             <tr>
               <td>S.no</td>
               <td>Medicine</td>
